@@ -1,0 +1,44 @@
+*{
+	transition: all .4s linear;
+}
+
+.input_box{
+	text-align: center;
+}
+
+.input_box input{
+	border: none;
+    color: #41822a;
+    border-bottom: 1px solid #777;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 50px;
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    padding:10px;
+}
+
+.input_box input:focus{
+	outline: none;
+	border-bottom: 1px solid #2fb92f;
+}
+
+.output_box{
+	margin: 50px 0;
+}
+
+.output_box p{
+	text-align: center;
+	width: fit-content;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: #ebf5eb;
+    box-shadow: inset 0px 2px 3px #aaa;
+    border-radius: 6px;
+    height: 4em;
+    line-height: 4em;
+}
+
+.input_box input, .output_box p{
+	min-width: 300px;
+}
