@@ -31,12 +31,12 @@
 	text-align: center;
 	width: fit-content;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px;
     background: #ebf5eb;
     box-shadow: inset 0px 2px 3px #aaa;
     border-radius: 6px;
-    height: 4em;
-    line-height: 4em;
+    line-height: 2em;
+    max-width: 60vw;
 }
 
 .input_box input, .output_box p{
