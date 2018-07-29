@@ -3,7 +3,7 @@
 Breakout Game
 =======================================================
 ******************************************************/
-function Breakout(canvas,{width=500, height=400, brick_height=20, brick_width=50, paddle_width=50, paddle_height=10, ball_radius=5}={}){
+function Breakout(canvas,{width=500, height=400, brick_height=20, brick_width=50, paddle_width=70, paddle_height=10, ball_radius=5}={}){
 	var score = 0;
 	canvas.width = width;
 	canvas.height = height;
@@ -14,7 +14,7 @@ function Breakout(canvas,{width=500, height=400, brick_height=20, brick_width=50
 			total_width: width
 		}),
 		bricks: new BrickCollection(6, {width, brick_width, height, brick_height, padding: 40, colors: ["#c84848", "#c66c3a", "#b47a30", "#a2a22a", "#48a048","#4248c8"]}),
-		ball: new Ball(new Vector(Math.floor(width/2), Math.floor(height/2)), new Vector(-5, -5), {radius:ball_radius})
+		ball: new Ball(new Vector(Math.floor(width/2), Math.floor(height/2)), new Vector(-3, -5), {radius:ball_radius})
 	}
 
 	this.draw = ()=>{
@@ -64,7 +64,8 @@ function Breakout(canvas,{width=500, height=400, brick_height=20, brick_width=50
 		}
 		var paddleHit = components.paddle.detectCollision(ball); // collision with paddle
 		if(paddleHit){
-			ball.rebound([1, -1]);
+			// ball.rebound([1, -1]);
+			paddleHit.rebound(ball)
 		}
 		var wallHit = components.ball.detectCollision(width, height); // collision with walls
 		wallHit.forEach(w=> ball.rebound(w));
@@ -83,9 +84,10 @@ function Breakout(canvas,{width=500, height=400, brick_height=20, brick_width=50
 
 	this.reset = function(){
 		components.ball.pos = new Vector(Math.floor(width/2), Math.floor(height/2));
-		components.ball.speed = new Vector(-5, -5); 
+		components.ball.speed = new Vector(-3, -5); 
 		components.bricks.activateAll();
 		score = 0;
+		components.paddle.reset();
 	}
 
 

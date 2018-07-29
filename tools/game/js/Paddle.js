@@ -1,4 +1,5 @@
 function Paddle(pos, {color="#f00", width=50, height=10, total_width, total_height}={}){
+	this.init = pos.clone();
 	this.pos = pos;
 	this.dir = 0;
 
@@ -33,7 +34,10 @@ Paddle.prototype.setDirection = function (d) {this.dir = d;}
 Paddle.prototype.rebound = function (ball) {
 	var diff = this.pos.x + this.width/2 - ball.pos.x;
 	ball.rebound([-1, 1]);
-	ball.speed.y += Math.sign(ball.speed.y);
-	ball.speed.x = ball.speed.y*diff/this.width;
-	
+	ball.speed.y = Math.max(-1 - Math.abs(ball.speed.y), -8);
+	ball.speed.x = ball.speed.y*2*diff/this.width;
 }
+
+Paddle.prototype.reset = function() {
+	this.pos = this.init.clone();
+};

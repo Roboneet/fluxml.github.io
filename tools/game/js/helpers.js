@@ -7,6 +7,10 @@ function Vector(x, y){
 		this.x += other.x;
 		this.y += other.y;
 	}
+
+	this.clone = () =>{
+		return new Vector(this.x, this.y)
+	}
 }
 
 function randColor(){
