@@ -151,7 +151,7 @@ function Pong(playground,{width=500, height=400, paddle_width=10, paddle_height=
 		components.ball.pos.y = Math.floor(height/2) - 1;
 		var k = -1 * Math.sign(components.ball.speed.x);
 		components.ball.speed.x = k*5;
-		components.ball.speed.y = -1 * k;
+		components.ball.speed.y = -1 * k * (Math.floor(Math.random()*11) - 5);
 
 	}
 
